@@ -38,7 +38,7 @@ sudo apt update && sudo apt install curl -y
 ```
 - installeer de stack met dit commando (sudo-wachtwoord wordt gevraagd)
 ```bash
-curl -fsSL https://raw.githubusercontent.com/mtdig/opdracht-5/main/opdracht5-installatie.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mtdig/opdracht-5/main/opdracht5-installatie.sh | sudo bash
 ```
 
 ### Post-Installatie
