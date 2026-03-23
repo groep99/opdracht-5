@@ -181,7 +181,17 @@ docker compose -f "${VW_COMPOSE_DIR}/docker-compose.yml" up -d
 info "Vaultwarden draait op https://vaultwarden.opdracht5.local (poort 443)."
 
 # :: 7. Portainer (HTTP :${PORTAINER_PORT})
+info "Portainer instellen..."
+mkdir -p "${PT_COMPOSE_DIR}" "${PT_DATA_DIR}"
+chown "${REAL_USER}:${REAL_USER}" "${PT_DATA_DIR}"
 
+cat > "${PT_COMPOSE_DIR}/docker-compose.yml" <<EOF
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${PT_DATA_DIR}:/data
     ports:
